@@ -3,7 +3,7 @@ import { useState } from "react"
 export default function Player({ name, symbol }) {
     const [isEditing, setIsEditing] = useState(false)
     function enableEditing() {
-        setIsEditing(true)
+        setIsEditing(oldEditing => !oldEditing)
     }
 
     let playerName = <span className="player-name">{name}</span>
@@ -16,6 +16,6 @@ export default function Player({ name, symbol }) {
             {playerName}
             <span className="player-symbol">{symbol}</span>
         </span>
-        <button onClick={enableEditing}>Edit</button>
+        <button onClick={enableEditing}>{isEditing ? 'Save' : 'Edit'}</button>
     </li>
 }
